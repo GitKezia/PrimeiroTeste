@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class Main {
 
+    private static List<Pessoa> mulheres = new ArrayList<>(); // Tornar a lista estática
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -31,7 +33,7 @@ public class Main {
         }
 
         // Usar expressões lambda para filtrar mulheres
-        List<Pessoa> mulheres = pessoas.stream()
+        mulheres = pessoas.stream()
                 .filter(p -> p.getSexo() == 'F')
                 .collect(Collectors.toList());
 
@@ -39,4 +41,10 @@ public class Main {
         System.out.println("Lista de Mulheres:");
         mulheres.forEach(p -> System.out.println("Nome: " + p.getNome() + ", Sexo: " + p.getSexo()));
     }
+
+    // Tornar o método estático para que possa ser acessado de fora
+    public static List<Pessoa> getMulheres() {
+        return mulheres;
+    }
 }
+
